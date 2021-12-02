@@ -1,0 +1,9 @@
+# textdomain: pkr_nodes
+@1 Base Node (Light)=@1基礎方塊（淺色）
+@1 Base Node (Dark)=@1基礎方塊（深色）
+@1 Base Node (Glasslike)=@1基礎方塊（玻璃）
+White=白色
+Red=紅色
+Green=綠色
+Blue=藍色
+Barrier=屏障

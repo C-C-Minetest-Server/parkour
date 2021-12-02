@@ -1,0 +1,3 @@
+[submodule "update_translations"]
+	path = update_translations
+	url = https://github.com/minetest-tools/update_translations
