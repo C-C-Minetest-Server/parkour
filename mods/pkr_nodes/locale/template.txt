@@ -1,9 +1,12 @@
 # textdomain: pkr_nodes
 @1 Base Node (Light)=
 @1 Base Node (Dark)=
+@1 Base Node (Half Light)=
+@1 Base Node (Full Light)=
 @1 Base Node (Glasslike)=
 White=
 Red=
 Green=
 Blue=
 Barrier=
+End Point=

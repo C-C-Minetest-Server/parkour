@@ -1,0 +1,10 @@
+# textdomain: pkr_main
+No description avaliable=
+Going to level @1...=
+Level Description: @1=
+Level complete!=
+Restart the current level=
+Level restarted=
+Skip to a level=
+Level skipped!=
+Level skip failed!=
