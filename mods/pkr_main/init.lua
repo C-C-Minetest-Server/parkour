@@ -67,6 +67,13 @@ minetest.override_item(pkr_nodes.N .. ":end",{
     on_punch = pkr_main.end_level
 })
 
+minetest.override_item(pkr_nodes.N .. ":restart",{
+    on_punch = function()
+        minetest.chat_send_all(S("Performing Restart..."))
+        pkr_main.load_level(pkr_main.level)
+    end
+})
+
 minetest.register_on_joinplayer(function(ObjectRef, last_login)
     if ObjectRef:get_player_name() == "singleplayer" then
         minetest.after(0.2,pkr_main.load_level,pkr_main.level)

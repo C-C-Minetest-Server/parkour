@@ -5,3 +5,6 @@ Level Description: @1=關卡描述：@1
 Level complete!=破關！
 Restart the current level=重新開始關卡
 Level restarted=關卡已重啟！
+Skip to a level=跳至關卡
+Level skipped!=關卡已跳過！
+Level skip failed!=關卡跳過失敗！

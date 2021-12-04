@@ -1,11 +1,12 @@
 # textdomain: pkr_nodes
 @1 Base Node (Light)=@1基礎方塊（淺色）
 @1 Base Node (Dark)=@1基礎方塊（深色）
-@1 Base Node (Half Light)=
+@1 Base Node (Half Light)=@1基礎方塊（半光源）
+@1 Base Node (Full Light)=@1基礎方塊（全光源）
 @1 Base Node (Glasslike)=@1基礎方塊（玻璃）
 White=白色
 Red=紅色
 Green=綠色
 Blue=藍色
 Barrier=屏障
-End Point=
+End Point=終點

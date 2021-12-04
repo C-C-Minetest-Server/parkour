@@ -70,4 +70,10 @@ minetest.register_node(pkr_nodes.N .. ":end",{
     groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
 })
 
+minetest.register_node(pkr_nodes.N .. ":restart",{
+    description = S("Restart Point"),
+    tiles = {"pkr_nodes_base.png^[colorize:#FF0000:80^pkr_nodes_end.png"},
+    groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
+})
+
 log("info","Loaded")
