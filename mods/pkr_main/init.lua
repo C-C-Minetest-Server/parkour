@@ -46,6 +46,7 @@ function pkr_main.load_level(level)
     MS:set_int("level",level)
     pkr_init.state = false
     c_details = {}
+    c_details.unlocked = 0
     minetest.chat_send_all(S("Going to level @1...",tostring(level)))
     freeze.freeze(pkr_init.PLAYER)
     minetest.delete_area({x=0,y=0,z=0}, {x=30,y=30,z=30})
@@ -59,7 +60,7 @@ end
 
 function pkr_main.end_level(force)
     if not force then
-        if c_details.unlocked == nil or c_details.unlocked < LVLS[pkr_main.level].locks then
+        if c_details.unlocked < LVLS[pkr_main.level].locks then
             minetest.chat_send_all(S("Please unlock all locks!"))
             return false
         end
@@ -91,7 +92,6 @@ minetest.override_item(pkr_nodes.N .. ":lock_locked",{
         local node = minetest.get_node(pos)
         node.name = pkr_nodes.N .. ":lock_unlocked"
         minetest.swap_node(pos,node)
-        if not c_details.unlocked then c_details.unlocked = 0 end
         c_details.unlocked = c_details.unlocked + 1
         local remain = LVLS[pkr_main.level].locks - c_details.unlocked
         if remain == 0 then
