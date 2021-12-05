@@ -13,3 +13,6 @@ End Point=
 Restart Point=
 Half Bouncy Block=
 Full Bouncy Block=
+Lock Block=
+Unlocked Lock Block=
+YOU HACKER YOU! @1=

@@ -12,13 +12,15 @@ function pkr_nodes.register_base_node(color,display_name,modname)
     minetest.register_node(modname .. ":" .. color .. "_light",{
         description = S("@1 Base Node (Light)",display_name),
         tiles = {"pkr_nodes_base.png^[colorize:#" .. color .. ":40"},
-        groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 }
+        groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
+        is_ground_content = false,
     })
     minetest.register_alias(modname .. ":" .. color,modname .. ":" .. color .. "_light")
     minetest.register_node(modname .. ":" .. color .. "_dark",{
         description = S("@1 Base Node (Dark)",display_name),
         tiles = {"pkr_nodes_base.png^[colorize:#" .. color .. ":80"},
-        groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 }
+        groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
+        is_ground_content = false,
     })
     minetest.register_node(modname .. ":" .. color .. "_light_half",{
         description = S("@1 Base Node (Half Light)",display_name),
@@ -26,6 +28,7 @@ function pkr_nodes.register_base_node(color,display_name,modname)
         groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
         light_source = minetest.LIGHT_MAX / 2,
         paramtype = "light",
+        is_ground_content = false,
     })
     minetest.register_node(modname .. ":" .. color .. "_light_full",{
         description = S("@1 Base Node (Full Light)",display_name),
@@ -33,6 +36,7 @@ function pkr_nodes.register_base_node(color,display_name,modname)
         groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
         light_source = minetest.LIGHT_MAX,
         paramtype = "light",
+        is_ground_content = false,
     })
     minetest.register_node(modname .. ":" .. color .. "_glass",{
         description = S("@1 Base Node (Glasslike)",display_name),
@@ -41,7 +45,8 @@ function pkr_nodes.register_base_node(color,display_name,modname)
         use_texture_alpha = "blend",
         sunlight_propagates = true,
         paramtype = "light",
-        groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 }
+        groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
+        is_ground_content = false,
     })
 end
 
@@ -61,19 +66,22 @@ minetest.register_node(pkr_nodes.N .. ":barrier",{
     inventory_image = "air.png",
     wield_image = "air.png",
     sunlight_propagates = true,
-    paramtype = "light"
+    paramtype = "light",
+    is_ground_content = false,
 })
 
 minetest.register_node(pkr_nodes.N .. ":end",{
     description = S("End Point"),
     tiles = {"pkr_nodes_base.png^[colorize:#0000FF:80^pkr_nodes_end.png"},
     groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
+    is_ground_content = false,
 })
 
 minetest.register_node(pkr_nodes.N .. ":restart",{
     description = S("Restart Point"),
     tiles = {"pkr_nodes_base.png^[colorize:#FF0000:80^pkr_nodes_end.png"},
     groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
+    is_ground_content = false,
 })
 
 --Extract from block in blocks, and h-v-smacker's technic fork's trampoline code
@@ -92,6 +100,7 @@ minetest.register_node(pkr_nodes.N .. ":bounce_half", {
 		}
 	},
     use_texture_alpha = "blend",
+    is_ground_content = false,
 })
 
 minetest.register_node(pkr_nodes.N .. ":bounce_full", {
@@ -109,6 +118,26 @@ minetest.register_node(pkr_nodes.N .. ":bounce_full", {
 		}
 	},
     use_texture_alpha = "blend",
+})
+
+-- Facedir codes extracted from mtg furnace
+minetest.register_node(pkr_nodes.N .. ":lock_locked", {
+	description = S("Lock Block"),
+	tiles = {"pkr_nodes_transparent.png^[colorize:#FF0000:70^pkr_nodes_lock.png"},
+	is_ground_content = false,
+	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1},
+    paramtype2 = "facedir",
+    legacy_facedir_simple = true,
+})
+
+local _ = S("Unlocked Lock Block") -- i18n.py workaround
+minetest.register_node(pkr_nodes.N .. ":lock_unlocked", {
+	description = S("YOU HACKER YOU! @1",S("Unlocked Lock Block")),
+	tiles = {"pkr_nodes_transparent.png^[colorize:#FF0000:70^pkr_nodes_lock_open.png"},
+	is_ground_content = false,
+	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, not_in_creative_inventory = 1},
+    paramtype2 = "facedir",
+    legacy_facedir_simple = true,
 })
 
 log("info","Loaded")
