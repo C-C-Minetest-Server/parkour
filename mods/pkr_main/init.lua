@@ -23,6 +23,8 @@ do
         local x = now_set:get("x")
         local y = now_set:get("y")
         local z = now_set:get("z")
+        local news = now_set:get("news")
+        if news == "" then news = nil end
         local locks = tonumber(now_set:get("locks")) or 0
         local description = now_set:get("description")
         if not description or description == "" then
@@ -31,10 +33,19 @@ do
         if not (x and y and z) then
             break
         end
-        LVLS[now_lvl] = {pos = {x=tonumber(x),y=tonumber(y),z=tonumber(z)},description = description,locks=locks}
+        LVLS[now_lvl] = {pos = {x=tonumber(x),y=tonumber(y),z=tonumber(z)},description = description,locks=locks,news=news}
         now_lvl = now_lvl + 1
     end
 end
+
+-- Extract from server_news License: MIT
+function pkr_main.get_help_formspec(data)
+	local news_fs = 'size[12,8.25]'..
+		"button_exit[-0.05,7.8;2,1;exit;Close]"
+	news_fs = news_fs.."textarea[0.25,0;12.1,9;news;;"..minetest.formspec_escape(data).."]"
+	return news_fs
+end
+
 
 
 function pkr_main.load_level(level)
@@ -59,6 +70,10 @@ function pkr_main.load_level(level)
     pkr_init.PLAYER:set_pos(LVLS[level].pos)
     minetest.chat_send_all(S("Level Description: @1",LVLS[level].description))
     pkr_init.state = true
+    if LVLS[level].news then
+        -- Extract from server_news
+        minetest.show_formspec(pkr_init.PLAYER:get_player_name(), "news", pkr_main.get_help_formspec(LVLS[level].news))
+    end
 end
 
 function pkr_main.end_level(force)
