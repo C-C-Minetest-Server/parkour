@@ -45,6 +45,9 @@ function pkr_main.load_level(level)
     pkr_main.level = level
     MS:set_int("level",level)
     pkr_init.state = false
+    pkr_init.PLAYER:get_inventory():set_list("main", {})
+    pkr_init.PLAYER:get_inventory():set_list("craft", {})
+    pkr_init.PLAYER:get_inventory():set_list("craftpreview", {})
     c_details = {}
     c_details.unlocked = 0
     minetest.chat_send_all(S("Going to level @1...",tostring(level)))
