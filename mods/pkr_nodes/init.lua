@@ -140,4 +140,24 @@ minetest.register_node(pkr_nodes.N .. ":lock_unlocked", {
     legacy_facedir_simple = true,
 })
 
+-- Extract from maptools, changes: textures, bugfix
+for pusher_num=1,10,1 do
+	minetest.register_node(pkr_nodes.N .. ":pusher_" .. pusher_num, {
+		description = S("Pusher (@1)",pusher_num),
+		range = 12,
+		stack_max = 10000,
+		inventory_image = "pkr_nodes_transparent.png^[colorize:#00FF00:" .. (pusher_num * 7) + 10,
+		drawtype = "nodebox",
+		tiles = {"pkr_nodes_transparent.png^[colorize:#00FF00:" .. (pusher_num * 7) + 10},
+		paramtype = "light",
+		paramtype2 = "facedir",
+		sunlight_propagates = true,
+		node_box = {
+			type = "fixed",
+			fixed = {-0.5, -0.5, -0.5, 0.5, -0.4999, 0.5},
+		},
+        groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, fall_damage_add_percent = -100,bouncy = pusher_num * 100,},
+	})
+end
+
 log("info","Loaded")
