@@ -119,7 +119,7 @@ cmd_alias.create_alias("restart","re","r")
 
 minetest.register_chatcommand("goto",{
     description = S("Skip to a level"),
-    param = "<level ID>"
+    param = "<level ID>",
     func = function(name,param)
         level = tonumber(param)
         if LVLS[level] then
