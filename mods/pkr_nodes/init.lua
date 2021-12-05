@@ -76,4 +76,39 @@ minetest.register_node(pkr_nodes.N .. ":restart",{
     groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1 },
 })
 
+--Extract from block in blocks, and h-v-smacker's technic fork's trampoline code
+minetest.register_node(pkr_nodes.N .. ":bounce_half", {
+	description = S("Half Bouncy Block"),
+	drawtype = "mesh",
+	mesh = "block_in_block.obj",
+	tiles = {"pkr_nodes_base.png^[colorize:#00FF00:80", "pkr_nodes_transparent.png^[colorize:#00FF00:70"},
+	paramtype = "light",
+	is_ground_content = false,
+	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, bouncy = 75, fall_damage_add_percent = -100},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		}
+	},
+    use_texture_alpha = "blend",
+})
+
+minetest.register_node(pkr_nodes.N .. ":bounce_full", {
+	description = S("Full Bouncy Block"),
+	drawtype = "mesh",
+	mesh = "block_in_block.obj",
+	tiles = {"pkr_nodes_base.png^[colorize:#00FF00:80", "pkr_nodes_transparent.png^[colorize:#00FF00:70"},
+	paramtype = "light",
+	is_ground_content = false,
+	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, bouncy = 100, fall_damage_add_percent = -100},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		}
+	},
+    use_texture_alpha = "blend",
+})
+
 log("info","Loaded")
