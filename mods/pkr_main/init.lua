@@ -133,6 +133,13 @@ minetest.register_chatcommand("restart",{
     end
 })
 cmd_alias.create_alias("restart","re","r")
+text_commands.register_text_command("restart",{
+    description = S("Restart the current level"),
+    func = function(name,param)
+        pkr_main.load_level(pkr_main.level)
+        return true, S("Level restarted")
+    end
+})
 
 minetest.register_chatcommand("goto",{
     description = S("Skip to a level"),

@@ -7,3 +7,4 @@
 * `pkr_main`: The main mod of parkour game
 * `pkr_nodes`: Nodes used in parkour game
 * `player_api`: API to allow multiple mods to set player models and textures (from [https://github.com/minetest/minetest_game/tree/master/mods/player_api](Minetest Game))
+* `text_commands`: API to register function toggled on chat
