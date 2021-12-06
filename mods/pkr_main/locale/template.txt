@@ -2,6 +2,7 @@
 No description avaliable=
 Going to level @1...=
 Level Description: @1=
+Level Tips: @1=
 Please unlock all locks!=
 Level complete!=
 Performing Restart...=

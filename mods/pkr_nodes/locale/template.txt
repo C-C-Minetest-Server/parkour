@@ -16,4 +16,5 @@ Full Bouncy Block=
 Lock Block=
 Unlocked Lock Block=
 YOU HACKER YOU! @1=
-Pusher (@1)=
+Diggable Block (no drops)=
+Diggable Block (drops)=

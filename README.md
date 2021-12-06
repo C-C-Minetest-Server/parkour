@@ -27,4 +27,6 @@
    * `x`, `y`, `z` contains the spawnpoint of your level.
    * `description` contains the name of the map.
    * If you placed any locks in the level, set `lock` to the number of locks.
+   * Place tips in `news`.
 10. **Test it again in the `parkour` game** to ensure your level is working.
+

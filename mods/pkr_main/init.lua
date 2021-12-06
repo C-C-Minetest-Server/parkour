@@ -71,8 +71,7 @@ function pkr_main.load_level(level)
     minetest.chat_send_all(S("Level Description: @1",LVLS[level].description))
     pkr_init.state = true
     if LVLS[level].news then
-        -- Extract from server_news
-        minetest.show_formspec(pkr_init.PLAYER:get_player_name(), "news", pkr_main.get_help_formspec(LVLS[level].news))
+        minetest.chat_send_all(S("Level Tips: @1",LVLS[level].news))
     end
 end
 
