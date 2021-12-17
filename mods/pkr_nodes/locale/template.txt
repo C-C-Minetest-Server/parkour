@@ -11,6 +11,7 @@ Blue=
 Barrier=
 End Point=
 Restart Point=
+Jump Preventer=
 Half Bouncy Block=
 Full Bouncy Block=
 Lock Block=

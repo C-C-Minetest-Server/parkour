@@ -84,7 +84,16 @@ minetest.register_node(pkr_nodes.N .. ":restart",{
     is_ground_content = false,
 })
 
---Extract from block in blocks, and h-v-smacker's technic fork's trampoline code
+-- `disable_jump` refered to ethereal NG mod `ethereal:mushroom_pore`
+minetest.register_node(pkr_nodes.N .. ":nojump",{
+    description = S("Jump Preventer"),
+    tiles = {"pkr_nodes_base.png^[colorize:#FF0000:80^pkr_nodes_nojump.png"},
+    groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, disable_jump = 1},
+    is_ground_content = false,
+})
+
+-- Extract from block in blocks, and h-v-smacker's technic fork's trampoline code
+-- Inspired by Minecraft Smlime Block (typos?)
 minetest.register_node(pkr_nodes.N .. ":bounce_half", {
 	description = S("Half Bouncy Block"),
 	drawtype = "mesh",
