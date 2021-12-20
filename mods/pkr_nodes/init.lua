@@ -164,5 +164,35 @@ minetest.register_node(pkr_nodes.N .. ":dig_drop", {
 	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, diggable = 1},
 })
 
+if minetest.get_modpath("pkr_init") then
+    local _ = S("Mapgen Placeholder") --i18n.py workaround
+    minetest.register_node(pkr_nodes.N .. ":mapgen", {
+    	description = S("YOU HACKER YOU! @1",S("Mapgen Placeholder")),
+    	is_ground_content = false,
+    	groups = { pkr_nodes = 1, not_in_creative_inventory = 1},
+        drawtype = "airlike",
+        sunlight_propagates = true,
+    })
+    minetest.register_alias("mapgen_singlenode", pkr_nodes.N .. ":mapgen")
+end
+
+for _,y in pairs({1,2,3,4,5,6,7,8,9}) do
+    minetest.register_node(pkr_nodes.N .. ":text_" .. y, {
+    	description = S("Text node (@1)",y),
+    	tiles = {"pkr_nodes_transparent.png^[colorize:#0000FF:90^pkr_nodes_text.png"},
+    	is_ground_content = false,
+    	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, text = y},
+    })
+end
+
+for _,y in pairs({1,2,3,4,5,6,7,8,9}) do
+    minetest.register_node(pkr_nodes.N .. ":goto_" .. y, {
+    	description = S("Goto node (@1)",y),
+    	tiles = {"pkr_nodes_transparent.png^[colorize:#0000FF:90^pkr_nodes_goto.png"},
+    	is_ground_content = false,
+    	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, goto = y},
+    })
+end
+
 
 log("info","Loaded")

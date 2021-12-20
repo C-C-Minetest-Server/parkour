@@ -33,22 +33,22 @@ do
         if not (x and y and z) then
             break
         end
-        LVLS[now_lvl] = {pos = {x=tonumber(x),y=tonumber(y),z=tonumber(z)},description = description,locks=locks,news=news}
+        LVLS[now_lvl] = {
+            pos = {x=tonumber(x),y=tonumber(y),z=tonumber(z)},
+            description = description,
+            locks=locks,
+            news=news
+        }
+        for _,y in pairs({1,2,3,4,5,6,7,8,9}) do
+            LVLS[now_lvl]["text_" .. y] = now_set:get("text_" .. y)
+            LVLS[now_lvl]["goto_" .. y] = tonumber(now_set:get("goto_" .. y))
+        end
         now_lvl = now_lvl + 1
     end
 end
 
--- Extract from server_news License: MIT
-function pkr_main.get_help_formspec(data)
-	local news_fs = 'size[12,8.25]'..
-		"button_exit[-0.05,7.8;2,1;exit;Close]"
-	news_fs = news_fs.."textarea[0.25,0;12.1,9;news;;"..minetest.formspec_escape(data).."]"
-	return news_fs
-end
-
-
-
 function pkr_main.load_level(level)
+    MS:set_int("top_level",MS:get_int("top_level") < level and level or MS:get_int("top_level"))
     if not LVLS[level] then
         log("warning","Level " .. tostring(level) .. " does not exists!")
         return
@@ -61,31 +61,36 @@ function pkr_main.load_level(level)
     pkr_init.PLAYER:get_inventory():set_list("craftpreview", {})
     c_details = {}
     c_details.unlocked = 0
-    minetest.chat_send_all(S("Going to level @1...",tostring(level)))
+    pkr_init.SEND(S("Going to level @1...",tostring(level)))
     freeze.freeze(pkr_init.PLAYER)
     minetest.delete_area({x=0,y=0,z=0}, {x=30,y=30,z=30})
     minetest.place_schematic({x=0,y=0,z=0}, schems_prefix .. tostring(level) .. ".mts",
         0,{},true)
     freeze.release(pkr_init.PLAYER)
     pkr_init.PLAYER:set_pos(LVLS[level].pos)
-    minetest.chat_send_all(S("Level Description: @1",LVLS[level].description))
+    pkr_init.SEND(S("Level Description: @1",LVLS[level].description))
     pkr_init.state = true
     if LVLS[level].news then
-        minetest.chat_send_all(S("Level Tips: @1",LVLS[level].news))
+        pkr_init.SEND(S("Level Tips: @1",LVLS[level].news))
     end
 end
 
-function pkr_main.end_level(force)
+function pkr_main.end_level(force,no_repeat)
     if not force then
         if c_details.unlocked < LVLS[pkr_main.level].locks then
-            minetest.chat_send_all(S("Please unlock all locks!"))
+            pkr_init.SEND(S("Please unlock all locks!"))
             return false
         end
     end
-    minetest.chat_send_all(S("Level complete!"))
-    local will_lvl = pkr_main.level
-    if LVLS[pkr_main.level + 1] then
-        will_lvl = pkr_main.level + 1
+    pkr_init.SEND(S("Level complete!"))
+    local will_lvl = pkr_main.level + 1
+    if not LVLS[will_lvl] then
+        if no_repeat then
+            pkr_init.SEND(S("You've been finshed all levels! Use /goto <level> to play any levels again."))
+            will_lvl = 0
+        else
+            will_lvl = pkr_main.level
+        end
     end
     pkr_main.load_level(will_lvl)
 end
@@ -119,6 +124,42 @@ minetest.override_item(pkr_nodes.N .. ":lock_locked",{
     end
 })
 
+minetest.register_abm({
+    label = "Text blocks",
+    nodenames = {"group:text"},
+    chance = 1,
+    interval = 1,
+    min_y = 0,
+    max_y = 30,
+    action = function(pos, node, active_object_count, active_object_count_wider)
+        local TEXT_ID = minetest.registered_nodes[node.name].groups.text
+        minetest.get_meta(pos):set_string("infotext",LVLS[pkr_main.level]["text_" .. TEXT_ID])
+    end
+})
+
+minetest.register_abm({
+    label = "Goto blocks",
+    nodenames = {"group:goto"},
+    chance = 1,
+    interval = 1,
+    min_y = 0,
+    max_y = 30,
+    action = function(pos, node, active_object_count, active_object_count_wider)
+        local GOTO_ID = minetest.registered_nodes[node.name].groups.goto
+        minetest.get_meta(pos):set_string("infotext","Go to " .. LVLS[pkr_main.level]["goto_" .. GOTO_ID])
+    end
+})
+
+for _,y in pairs({1,2,3,4,5,6,7,8,9}) do
+    minetest.override_item(pkr_nodes.N .. ":goto_" .. y,{
+        on_punch = function(pos)
+            local GOTO = LVLS[pkr_main.level]["goto_" .. y]
+            if not GOTO then return end
+            pkr_main.load_level(GOTO)
+        end
+    })
+end
+
 minetest.register_on_joinplayer(function(ObjectRef, last_login)
     if ObjectRef:get_player_name() == "singleplayer" then
         minetest.after(0.2,pkr_main.load_level,pkr_main.level)
@@ -146,6 +187,9 @@ minetest.register_chatcommand("goto",{
     param = "<level ID>",
     func = function(name,param)
         level = tonumber(param)
+        if level and level > MS:get_int("top_level") and pkr_init.GAMEMODE == 0 then
+            return false, "You are not in cheating mode."
+        end
         if LVLS[level] then
             pkr_main.load_level(level)
             return true, S("Level skipped!")
@@ -154,5 +198,17 @@ minetest.register_chatcommand("goto",{
     end
 })
 cmd_alias.create_alias("goto","g","go","to")
+
+minetest.register_chatcommand("end",{
+    description = S("End this level (cheating mode only)"),
+    param = "[<force>]",
+    func = function(name,param)
+        if pkr_init.GAMEMODE == 0 then
+            return false, "You are not in cheating mode."
+        end
+        pkr_main.end_level(param == "1" or param == "true")
+    end
+})
+cmd_alias.create_alias("end","e")
 
 log("info","Loaded")

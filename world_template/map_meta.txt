@@ -1,0 +1,4 @@
+seed = 0
+mg_name = singlenode
+mgname = singlenode
+[end_of_params]
