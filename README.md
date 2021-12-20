@@ -30,3 +30,8 @@
    * Place tips in `news`.
 10. **Test it again in the `parkour` game** to ensure your level is working.
 
+## Credits
+* All codes: Me (Inspired by Minecraft YouTubers)
+* Media: Me (Inspired by `void` game)
+* Money (if any): GreenXenith and others
+* GitHub workflows: Minetest Team > Capturetheflag Team
