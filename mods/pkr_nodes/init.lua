@@ -190,7 +190,7 @@ for _,y in pairs({1,2,3,4,5,6,7,8,9}) do
     	description = S("Goto node (@1)",y),
     	tiles = {"pkr_nodes_transparent.png^[colorize:#0000FF:90^pkr_nodes_goto.png"},
     	is_ground_content = false,
-    	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, goto = y},
+    	groups = { oddly_breakable_by_hand = 3, pkr_nodes = 1, _goto = y},
     })
 end
 

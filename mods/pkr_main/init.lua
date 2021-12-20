@@ -145,7 +145,7 @@ minetest.register_abm({
     min_y = 0,
     max_y = 30,
     action = function(pos, node, active_object_count, active_object_count_wider)
-        local GOTO_ID = minetest.registered_nodes[node.name].groups.goto
+        local GOTO_ID = minetest.registered_nodes[node.name].groups._goto
         minetest.get_meta(pos):set_string("infotext","Go to " .. LVLS[pkr_main.level]["goto_" .. GOTO_ID])
     end
 })

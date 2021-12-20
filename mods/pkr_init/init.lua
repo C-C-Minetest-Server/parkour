@@ -29,6 +29,8 @@ if CURRENTVERSION ~= pkr_init.VERSION then
     CURRENTVERSION = pkr_init.VERSION
     MS:set_int("version",pkr_init.VERSION)
 end
+
+log("info","Loading world version " .. CURRENTVERSION)
 pkr_init.GAMEMODE = MS:get_int("mode")
 
 if (minetest.is_creative_enabled("singleplayer") and 1 or 0) ~= pkr_init.GAMEMODE then

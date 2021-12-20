@@ -18,6 +18,7 @@ minetest.register_on_chat_message(function(name,msg)
     end
     minetest.after(0.2,function()
         for x,y in pairs(text_commands.registered_text_commands) do
+            local leave = 0
             repeat
                 if y.privs then
                     local can, missing =  minetest.check_player_privs(name, y.privs)
@@ -26,21 +27,21 @@ minetest.register_on_chat_message(function(name,msg)
                         for _,z in pairs(missing) do
                             p_str = p_str .. " " .. z
                         end
-                        minetest.chat_send_all(("-!- Text command failed (missing privs:%s)."):format(p_str))
+                        minetest.chat_send_player(name,("-!- Text command failed (missing privs:%s)."):format(p_str))
                         break
                     end
                 end
                 if msg:find(x) then
                     local status, return_msg = y.func(name,msg)
                     if status == false and return_msg == nil then
-                        minetest.chat_send_all("-!- Text command failed.")
+                        minetest.chat_send_player(name,"-!- Text command failed.")
                     elseif return_msg ~= nil then
-                        minetest.chat_send_all(tostring(return_msg))
+                        minetest.chat_send_player(name,tostring(return_msg))
                     end
                     return
                 end
-                break
-            until true
+                leave = 1
+            until leave = 1 -- What th* luacheck
         end
     end)
 end)
