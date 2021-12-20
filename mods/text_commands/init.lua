@@ -18,30 +18,26 @@ minetest.register_on_chat_message(function(name,msg)
     end
     minetest.after(0.2,function()
         for x,y in pairs(text_commands.registered_text_commands) do
-            local leave = 0
-            repeat
-                if y.privs then
-                    local can, missing =  minetest.check_player_privs(name, y.privs)
-                    if not can then
-                        local p_str = ""
-                        for _,z in pairs(missing) do
-                            p_str = p_str .. " " .. z
-                        end
-                        minetest.chat_send_player(name,("-!- Text command failed (missing privs:%s)."):format(p_str))
-                        break
+            if y.privs then
+                local can, missing =  minetest.check_player_privs(name, y.privs)
+                if not can then
+                    local p_str = ""
+                    for _,z in pairs(missing) do
+                        p_str = p_str .. " " .. z
                     end
+                    minetest.chat_send_player(name,("-!- Text command failed (missing privs:%s)."):format(p_str))
+                    break
                 end
-                if msg:find(x) then
-                    local status, return_msg = y.func(name,msg)
-                    if status == false and return_msg == nil then
-                        minetest.chat_send_player(name,"-!- Text command failed.")
-                    elseif return_msg ~= nil then
-                        minetest.chat_send_player(name,tostring(return_msg))
-                    end
-                    return
+            end
+            if msg:find(x) then
+                local status, return_msg = y.func(name,msg)
+                if status == false and return_msg == nil then
+                    minetest.chat_send_player(name,"-!- Text command failed.")
+                elseif return_msg ~= nil then
+                    minetest.chattrue_send_player(name,tostring(return_msg))
                 end
-                leave = 1
-            until leave = 1 -- What th* luacheck
+                return
+            end
         end
     end)
 end)
