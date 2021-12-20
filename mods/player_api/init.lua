@@ -14,21 +14,21 @@ player_api.register_model("character.b3d", {
 		mine      = {x = 189, y = 198},
 		walk_mine = {x = 200, y = 219},
 		sit       = {x = 81,  y = 160},
-	},
-	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
-	stepheight = 0.6,
-	eye_height = 1.47,
-})
+		},
+		collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
+		stepheight = 0.6,
+		eye_height = 1.47,
+		})
 
--- Update appearance when the player joins
-minetest.register_on_joinplayer(function(player)
-	player_api.player_attached[player:get_player_name()] = false
-	player_api.set_model(player, "character.b3d")
-	player:set_local_animation(
+		-- Update appearance when the player joins
+		minetest.register_on_joinplayer(function(player)
+		player_api.player_attached[player:get_player_name()] = false
+		player_api.set_model(player, "character.b3d")
+		player:set_local_animation(
 		{x = 0,   y = 79},
 		{x = 168, y = 187},
 		{x = 189, y = 198},
 		{x = 200, y = 219},
 		30
-	)
-end)
+		)
+		end)
