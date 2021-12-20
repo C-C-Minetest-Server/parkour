@@ -145,8 +145,7 @@ minetest.register_node(
                 {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
             }
         },
-        use_texture_alpha = "blend",
-        is_ground_content = false
+        use_texture_alpha = "blend"
     }
 )
 
