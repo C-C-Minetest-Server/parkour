@@ -19,3 +19,6 @@ Unlocked Lock Block=
 YOU HACKER YOU! @1=
 Diggable Block (no drops)=
 Diggable Block (drops)=
+Mapgen Placeholder=
+Text node (@1)=
+Goto node (@1)=

@@ -19,8 +19,6 @@ Unlocked Lock Block=已解鎖的鎖頭方塊
 YOU HACKER YOU! @1=你是黑客！@1
 Diggable Block (no drops)=可挖掘方塊（無掉落）
 Diggable Block (drops)=可挖掘方塊（有掉落）
-
-
-##### not used anymore #####
-
-Pusher (@1)=彈跳活塞（@1）
+Mapgen Placeholder=地圖生成佔位方塊
+Text node (@1)=文字方塊（@1）
+Goto node (@1)=前往關卡方塊（@1）
