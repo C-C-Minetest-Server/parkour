@@ -35,3 +35,4 @@
 * Media: Me (Inspired by `void` game)
 * Money (if any): GreenXenith and others
 * GitHub workflows: Minetest Team > Capturetheflag Team
+* Beautiflyer: https://web.archive.org/web/20120830041232/http://www.userpixel.com/486
