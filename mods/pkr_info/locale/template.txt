@@ -1,0 +1,22 @@
+# textdomain: pkr_info
+Credits:=
+All: Emojiminetest=
+Supports: My family members=
+Idea: Minecraft YouTubers=
+Money Price (if any): GreenXenith and others=
+Credits=
+Punch the end block (the blue block with a circle)=
+to end the game.=
+Note that the red simular one is the restart block,=
+it's a trap!=
+The semi-transparent block are bouncy.=
+There are two types, full (100%) and half (75%).=
+Punch lock blocks to unlock them.=
+You have to unlock all of them to end the game.=
+Blocks with a cross inside a square are jump=
+preventors. So be careful!=
+Some blocks looks like a text editor.=
+Hover on it to look its text.=
+The block with 5 points plotted on its texture is the=
+GOTO block. Punch it to jump to other level.=
+Tutorial=

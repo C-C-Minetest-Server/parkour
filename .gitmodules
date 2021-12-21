@@ -1,3 +1,6 @@
 [submodule "update_translations"]
 	path = update_translations
 	url = https://github.com/minetest-tools/update_translations
+[submodule "mods/sfinv"]
+	path = mods/sfinv
+	url = https://github.com/rubenwardy/sfinv

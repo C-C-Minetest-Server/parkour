@@ -139,7 +139,7 @@ minetest.register_abm({
 
 minetest.register_abm({
     label = "Goto blocks",
-    nodenames = {"group:goto"},
+    nodenames = {"group:_goto"},
     chance = 1,
     interval = 1,
     min_y = 0,

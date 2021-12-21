@@ -241,9 +241,6 @@ for _, y in pairs({1, 2, 3, 4, 5, 6, 7, 8, 9}) do
             groups = {oddly_breakable_by_hand = 3, pkr_nodes = 1, text = y}
         }
     )
-end
-
-for _, y in pairs({1, 2, 3, 4, 5, 6, 7, 8, 9}) do
     minetest.register_node(
         pkr_nodes.N .. ":goto_" .. y,
         {
