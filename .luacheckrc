@@ -3,7 +3,7 @@ unused_args = false
 
 globals = {
 	"cmd_alias", "freeze", "log_util", "pkr_hands", "pkr_init", "pkr_main",
-	"pkr_nodes", "player_api", "text_commands", "pkr_info", "sfinv_info",
+	"pkr_nodes", "player_api", "text_commands", "pkr_info", "sfinv_info", "sfinv",
 
 	"vector",
 	math = {
