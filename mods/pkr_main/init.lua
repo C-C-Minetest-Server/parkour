@@ -48,6 +48,7 @@ do
         now_lvl = now_lvl + 1
     end
 end
+pkr_main.LEVELS = LVLS
 
 function pkr_main.load_level(level)
     MS:set_int("top_level", MS:get_int("top_level") < level and level or MS:get_int("top_level"))

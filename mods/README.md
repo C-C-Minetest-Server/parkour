@@ -6,6 +6,7 @@
 * `pkr_init`: Environment prepare of parkour game
 * `pkr_main`: The main mod of parkour game
 * `pkr_nodes`: Nodes used in parkour game
+* `pkr_workaound`: Workaround bugfix codes (BTW programmers usually ignores all TODOs)
 * `player_api`: API to allow multiple mods to set player models and textures (from [https://github.com/minetest/minetest_game/tree/master/mods/player_api](Minetest Game))
 * `text_commands`: API to register function toggled on chat
 * `sfinv`: A cleaner, simpler solution to having an advanced inventory in Minetest.
