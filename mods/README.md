@@ -8,3 +8,5 @@
 * `pkr_nodes`: Nodes used in parkour game
 * `player_api`: API to allow multiple mods to set player models and textures (from [https://github.com/minetest/minetest_game/tree/master/mods/player_api](Minetest Game))
 * `text_commands`: API to register function toggled on chat
+* `sfinv`: A cleaner, simpler solution to having an advanced inventory in Minetest.
+* `sfinv_info`: Make info tabs (From CTF rules (orig WTFPL))
