@@ -1,4 +1,5 @@
 # Parkour Game for [Minetest](https://minetest.net)!
+Note that the `jam` branch is for Game Jam submission from now on.
 ## Our goal
 1. Make everything simple
 2. Let our players enjoy our game
