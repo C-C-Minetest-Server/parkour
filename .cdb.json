@@ -8,6 +8,7 @@
         "jam_game_2021",
         "singleplayer"
     ],
+    "website": "https://github.com/C-C-Minetest-Server/parkour/tree/jam",
     "license": "LGPL-2.1-or-later",
     "media_license": "CC-BY-SA-4.0",
     "repo": "https://github.com/C-C-Minetest-Server/parkour",
