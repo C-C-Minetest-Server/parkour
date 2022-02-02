@@ -3,9 +3,7 @@ pkr_nodes = {
     N = minetest.get_current_modname()
 }
 local S = pkr_nodes.S
-local log = minetest.global_exists("log_util") and log_util.logger() or function()
-        return
-    end
+local log = minetest.global_exists("log_util") and log_util.logger() or function() return end
 
 function pkr_nodes.register_base_node(color, display_name, modname)
     if not display_name then
