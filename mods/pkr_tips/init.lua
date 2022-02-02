@@ -20,6 +20,7 @@ minetest.register_globalstep(function(dtime)
     if pos.y <= 1 then
         keep_ground_time = keep_ground_time + dtime
         if keep_ground_time > 5 then
+            log("action","Tips: You can use the /restart command if you get stuck.")
             pkr_tips.SEND(S("You can use the /restart command if you get stuck."))
             was_alerted_restart = true
         end
