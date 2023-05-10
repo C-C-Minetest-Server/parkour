@@ -1,0 +1,22 @@
+# textdomain: pkr_info
+Credits:=Créditos
+All: Emojiminetest=Todo: Emojiminetest
+Supports: My family members=Apoyos: Los miembros de mi familia
+Idea: Minecraft YouTubers=Idea: Youtubers de Minecraft
+Money Price (if any): GreenXenith and others=Premio económico (de haber alguno): GreenXenith y otros
+Credits=Créditos
+Punch the end block (the blue block with a circle)=Golpea el bloque
+to end the game.=para terminar el juego
+Note that the red simular one is the restart block,=Nota que el bloque rojo es similar, pero es el bloque de reinicio,
+it's a trap!=¡es una trampa!
+The semi-transparent block are bouncy.=Los bloques semitransparentes te hacen rebotar
+There are two types, full (100%) and half (75%).=Hay dos tipos, completos (100%) y medios (75%)
+Punch lock blocks to unlock them.=Golpea los bloques de candado para desbloquearlos
+You have to unlock all of them to end the game.=Debes desbloquearlos todos para terminar el nivel.
+Blocks with a cross inside a square are jump=Los bloques con una cruz dentro son preventores
+preventors. So be careful!=de salto. ¡Así que ten cuidado!
+Some blocks looks like a text editor.=Algunos bloques parecen un editor de texto.
+Hover on it to look its text.=Pasa el ratón por encima para ver su texto.
+The block with 5 points plotted on its texture is the=El bloque con 5 puntos trazados en su textura es el
+GOTO block. Punch it to jump to other level.=Bloque GOTO. Golpéalo para saltar a otro nivel.
+Tutorial=Tutorial
