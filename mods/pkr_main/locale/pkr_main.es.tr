@@ -1,0 +1,17 @@
+# textdomain: pkr_main
+No description avaliable=No hay descripción disponible
+Going to level @1...=Pasando al nivel @1
+Level Description: @1=Descripción del nivel: @1
+Level Tips: @1=Pistas del nivel: @1
+Please unlock all locks!=¡Por favor desbloquea todos los candados!
+Level complete!=¡Nivel completado!
+You've been finshed all levels! Use /goto <level> to play any levels again.=¡Has completado todos los niveles! Usa /goto <level> para jugar cualquier nivel de nuevo.
+Performing Restart...=Realizando reinicio...
+All lock(s) unlocked! Go ahead!=¡Todos los candados desbloqueados! ¡Adelante!
+Lock unlocked, @1 locks remaining.=Candado desbloqueado, @1 candado restante
+Restart the current level=Reiniciar el nivel actual
+Level restarted=Nivel reiniciado
+Skip to a level=Saltar a un nivel
+Level skipped!=¡Nivel saltado!
+Level skip failed!=¡El salto de nivel ha fallado!
+End this level (cheating mode only)=Terminar este nivel (solo en el modo trampas)
